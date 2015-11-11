@@ -74,7 +74,7 @@
                 <h:form>
                     <h:commandLink id="user_update_link" action="event_update?faces-redirect=true">
                         <h:outputText value="Update" />
-                        <f:setPropertyActionListener target="#{attendantManager.currentEventM}" value="#{user}" />
+                        <f:setPropertyActionListener target="#{eventManager.currentEvent}" value="#{event}" />
                     </h:commandLink>
                 </h:form>
             </h:column>
