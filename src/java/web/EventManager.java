@@ -321,10 +321,11 @@ public class EventManager {
 
     public String updateEvent() {
         try {
-            eventBean.updateEvent(evId, evName, evStartDate, evFinishDate);
+            eventBean.updateEvent(currentEvent.getId(), currentEvent.getName(),currentEvent.getStartDate(),currentEvent.getFinishDate());
+           // eventBean.updateEvent(evId, evName, evStartDate, evFinishDate);
             //escolher acção
             //return (String) "index?faces-redirect=true";
-            return (String) "Faz update a Event";
+            return "event_lists?faces_redirect=true";
         } catch (NumberFormatException ex) {
             throw new EJBException(ex.getMessage());
         }

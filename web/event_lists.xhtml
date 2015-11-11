@@ -72,9 +72,9 @@
                     <h:outputText value="Update" />
                 </f:facet>
                 <h:form>
-                    <h:commandLink id="user_update_link" action="_">
+                    <h:commandLink id="user_update_link" action="event_update?faces-redirect=true">
                         <h:outputText value="Update" />
-                        <f:setPropertyActionListener target="#{attendantManager}" value="#{user}" />
+                        <f:setPropertyActionListener target="#{attendantManager.currentEventM}" value="#{user}" />
                     </h:commandLink>
                 </h:form>
             </h:column>
