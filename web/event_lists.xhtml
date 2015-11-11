@@ -86,8 +86,8 @@
                 </f:facet>
                 <h:form>
 
-                    <h:commandLink id="user_remove_link" value="Remove" actionListener="#{attendantManager.removeUser}">
-                        <f:param name="deleteUserId" id="deleteUserId" value="#{user.userName}" />
+                    <h:commandLink id="remove_link" value="Remove" actionListener="#{eventManager.removeEvent}">
+                        <f:param name="deleteUserId" id="deleteEventId" value="#{event.id}" />
                     </h:commandLink>
                 </h:form> 
             </h:column>
