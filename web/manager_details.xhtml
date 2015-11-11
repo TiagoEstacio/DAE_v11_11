@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Manager Details</title>
+    </h:head>
+    <h:body>
+        <h:panelGrid columns="2">
+            
+            <h:outputLabel for="username" value="Name: " />
+            <h:outputText 
+                id="username"
+                value="#{managerManager.currentManager.name}"/>
+
+            <h:outputLabel for="name" value="Username: " />
+            <h:outputText 
+                id="name"
+                value="#{managerManager.currentManager.username}"/>
+
+            <h:outputLabel for="email" value="Email: " />
+            <h:outputText 
+                id="email"
+                value="#{managerManager.currentManager.email}"/>
+
+        </h:panelGrid>
+        
+        <br/>        
+
+        <h:dataTable
+            var="event"
+            summary="List of all manager's events"
+            value="#{managerManager.allEventsOfCurrentManager}"
+            rules="all"
+            cellpadding="5">
+
+            <f:facet name="header">
+                <h:outputText value="Manager's Event" />
+            </f:facet>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Name" />
+                    </f:facet>
+                    <h:outputText value="#{event.name}" />
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Description" />
+                    </f:facet>
+                    <h:outputText value="#{event.description}" />
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Category" />
+                    </f:facet>
+                    <h:outputText value="#{event.categories}" />
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="State" />
+                    </f:facet>
+                    <h:outputText value="#{event.openForEnrollment}" />
+                </h:column>
+            
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Category" />
+                    </f:facet>
+                    <h:outputText value="#{event.startDate}" />
+                </h:column>
+            
+                <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Actions" />
+                </f:facet>
+                <h:form>
+                    <h:commandLink id="details" action="event_attendants_update?faces-redirect=true">
+                        <h:outputText value="details" />
+                        <f:setPropertyActionListener target="#{managerManager.currentEvent}" value="#{event}" />
+                    </h:commandLink>
+                    &nbsp;
+                    
+                </h:form>
+            </h:column> 
+
+        </h:dataTable>
+
+        <br/>
+
+        <h:form>                  
+            <h:commandLink
+                id="return"
+                value="Return"
+                action="index?faces-redirect=true" />
+        </h:form>
+
+        <h:messages errorStyle="color: red" />        
+        
+    </h:body>
+</html>
+
