@@ -197,7 +197,7 @@ public class ManagerBean {
             }            
             //nao sei se este código está correcto??
             List<Manager> managers = (List<Manager>) em.createNamedQuery("getAllEventManagers")
-                    .setParameter("eventCode", event.getId())
+                    .setParameter("eventId", event.getId())
                     .getResultList();
             //-----------------------------------------------------------------------------------------
             List<Manager> enrolled = em.find(Event.class, id).getManagers();
@@ -211,14 +211,14 @@ public class ManagerBean {
     }
 
     /* Caso o manager use categories
-    public void enrollManagerInCategory(Long managerId, Long eventId) throws EntityDoesNotExistsException, ManagerEnrolledException{
+    public void enrollManagerInCategory(Long managerId, Long categoryId) throws EntityDoesNotExistsException, ManagerEnrolledException{
         try {
             Manager manager = em.find(Manager.class, managerId);
             if (manager == null) {
                 throw new EntityDoesNotExistsException("There is no manager with that id.");
             }
 
-            Category category = em.find(Category.class, eventId);
+            Category category = em.find(Category.class, categoryId);
             if (category == null) {
                 throw new EntityDoesNotExistsException("There is no category with that id.");
             }
@@ -237,9 +237,9 @@ public class ManagerBean {
         }
     }
     
-    public void unrollManagerInCategory(Long managerId, Long eventId) throws EntityDoesNotExistsException, ManagerNotEnrolledException {
+    public void unrollManagerInCategory(Long managerId, Long categoryId) throws EntityDoesNotExistsException, ManagerNotEnrolledException {
         try {
-            Category category = em.find(Category.class, eventId);
+            Category category = em.find(Category.class, categoryId);
             if(category == null){
                 throw new EntityDoesNotExistsException("There is no category with that id.");
             }            
@@ -286,7 +286,7 @@ public class ManagerBean {
             }            
             //nao sei se este código está correcto??
             List<Manager> managers = (List<Manager>) em.createNamedQuery("getAllCategoryManagers")
-                    .setParameter("categoryCode", category.getId())
+                    .setParameter("categoryId", category.getId())
                     .getResultList();
             //-----------------------------------------------------------------------------------------
             List<Manager> enrolled = em.find(Category.class, id).getManagers();

@@ -11,6 +11,8 @@ import entities.Event;
 import entities.Manager;
 import exceptions.EntityAlreadyExistsException;
 import exceptions.EntityDoesNotExistsException;
+import exceptions.EventEnrolledException;
+import exceptions.EventNotEnrolledException;
 import exceptions.MyConstraintViolationException;
 import exceptions.Utils;
 import java.util.ArrayList;
@@ -166,8 +168,96 @@ public class EventBean {
         } catch (Exception e) {
             throw new EJBException(e.getMessage());
         }
-    }    
+    }  
     
+    public void enrollEventInCategory(Long eventId, Long categoryId) throws EntityDoesNotExistsException, EventEnrolledException{
+        try {
+            Event event = em.find(Event.class, eventId);
+            if (event == null) {
+                throw new EntityDoesNotExistsException("There is no event with that id.");
+            }
+
+            Category category = em.find(Category.class, categoryId);
+            if (category == null) {
+                throw new EntityDoesNotExistsException("There is no categoty with that id.");
+            }
+
+            if (category.getEvents().contains(event)) {
+                throw new EventEnrolledException("Event is already enrolled in that category.");
+            }
+
+            category.addEvent(event); 
+            event.addCategory(category);
+
+        } catch (EntityDoesNotExistsException | EventEnrolledException e) {
+            throw e;
+        } catch (Exception e) {
+            throw new EJBException(e.getMessage());
+        }
+    }
+    
+    public void unrollEventInCategory(Long eventId, Long categoryId) throws EntityDoesNotExistsException, EventNotEnrolledException {
+        try {
+            Category category = em.find(Category.class, categoryId);
+            if(category == null){
+                throw new EntityDoesNotExistsException("There is no category with that id.");
+            }            
+            
+            Event event = em.find(Event.class, eventId);
+            if(event == null){
+                throw new EventNotEnrolledException("There is no event with that id.");
+            }
+            
+            if(!category.getAttendants().contains(event)){
+                throw new EventNotEnrolledException("Event is not enrolled in that category.");
+            }
+          
+            category.removeEvent(event);
+            event.removeCategory(category);
+
+        } catch (EntityDoesNotExistsException | EventNotEnrolledException e) {
+            throw e;             
+        } catch (Exception e) {
+            throw new EJBException(e.getMessage());
+        }
+    }
+    
+    public List<EventDTO> getEnrolledEventsInCategories(Long Id) throws EntityDoesNotExistsException{
+        try {
+            Category category = em.find(Category.class, Id);
+            if( category == null){
+                throw new EntityDoesNotExistsException("There is no category with that id.");
+            }            
+            List<Event> events = (List<Event>) category.getEvents();
+            return eventsToDTOs(events);
+        } catch (EntityDoesNotExistsException e) {
+            throw e;             
+        } catch (Exception e) {
+            throw new EJBException(e.getMessage());
+        }
+    }
+
+    public List<EventDTO> getUnrolledEventsInCategories(Long id) throws EntityDoesNotExistsException{
+        try {
+            Category category = em.find(Category.class, id);
+            if( category == null){
+                throw new EntityDoesNotExistsException("There is no category with that id.");
+            }            
+            //nao sei se este código está correcto??
+            List<Event> events = (List<Event>) em.createNamedQuery("getAllCategoryEvents")
+                    .setParameter("categoryId", category.getId())
+                    .getResultList();
+            //-----------------------------------------------------------------------------------------
+            List<Event> enrolled = em.find(Category.class, id).getEvents();
+            events.removeAll(enrolled);
+            return eventsToDTOs(events);
+        } catch (EntityDoesNotExistsException e) {
+            throw e;             
+        } catch (Exception e) {
+            throw new EJBException(e.getMessage());
+        }
+    }
+
     EventDTO eventToDTO(Event event) {
         return new EventDTO(
                 event.getId(),

@@ -194,7 +194,7 @@ public class AttendantBean {
             }            
             //nao sei se este código está correcto??
             List<Attendant> attendants = (List<Attendant>) em.createNamedQuery("getAllEventAttendants")
-                    .setParameter("eventCode", event.getId())
+                    .setParameter("eventId", event.getId())
                     .getResultList();
             //-----------------------------------------------------------------------------------------
             List<Attendant> enrolled = em.find(Event.class, id).getAttendants();
@@ -207,14 +207,14 @@ public class AttendantBean {
         }
     }
 
-    public void enrollAttendantInCategory(Long attendantId, Long eventId) throws EntityDoesNotExistsException, AttendantEnrolledException{
+    public void enrollAttendantInCategory(Long attendantId, Long categoryId) throws EntityDoesNotExistsException, AttendantEnrolledException{
         try {
             Attendant attendant = em.find(Attendant.class, attendantId);
             if (attendant == null) {
                 throw new EntityDoesNotExistsException("There is no attendant with that id.");
             }
 
-            Category category = em.find(Category.class, eventId);
+            Category category = em.find(Category.class, categoryId);
             if (category == null) {
                 throw new EntityDoesNotExistsException("There is no categoty with that id.");
             }
@@ -233,9 +233,9 @@ public class AttendantBean {
         }
     }
     
-    public void unrollAttendantInCategory(Long attendantId, Long eventId) throws EntityDoesNotExistsException, AttendantNotEnrolledException {
+    public void unrollAttendantInCategory(Long attendantId, Long categoryId) throws EntityDoesNotExistsException, AttendantNotEnrolledException {
         try {
-            Category category = em.find(Category.class, eventId);
+            Category category = em.find(Category.class, categoryId);
             if(category == null){
                 throw new EntityDoesNotExistsException("There is no category with that id.");
             }            
@@ -282,7 +282,7 @@ public class AttendantBean {
             }            
             //nao sei se este código está correcto??
             List<Attendant> attendants = (List<Attendant>) em.createNamedQuery("getAllCategoryAttendants")
-                    .setParameter("categoryCode", category.getId())
+                    .setParameter("categoryId", category.getId())
                     .getResultList();
             //-----------------------------------------------------------------------------------------
             List<Attendant> enrolled = em.find(Category.class, id).getAttendants();
