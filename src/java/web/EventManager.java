@@ -66,6 +66,7 @@ public class EventManager {
     private List<Category> categoriesM;
     private Attendant currentAttendantM;
     private Event currentEvent;
+    
 
     private Administrator currentAdministratorM;
     private List<String> attendantsSelected;
