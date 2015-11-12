@@ -75,16 +75,16 @@
             
                 <h:column>
                 <f:facet name="header">
-                    <h:outputText value="Actions" />
+                    <h:outputText value="Add Attendants" />
                 </f:facet>
                 <h:form>
                     <h:commandLink id="details" action="event_add_attendants?faces-redirect=true">
-                        <h:outputText value="details" />
-                        <f:setPropertyActionListener target="#{managerManager.currentEvent}" value="#{event}" />
+                        <h:outputText value="Add atendants" />
+                        <f:setPropertyActionListener target="#{eventManager.currentEvent}" value="#{event}" />
                     </h:commandLink>
                     &nbsp;
                     
-                </h:form>
+                </h:form>                
             </h:column> 
 
         </h:dataTable>

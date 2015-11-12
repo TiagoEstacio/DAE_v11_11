@@ -344,7 +344,7 @@ public class AttendantManager {
         this.atPasswordConfirm = atPasswordConfirm;
     }
     
-
+/*
     public String createAdministrator(){
         try {
             administratorBean.createAdministrator(adminName, adminEmail, adminUserName, adminPassword);
@@ -414,7 +414,7 @@ public class AttendantManager {
             throw new EJBException(ex.getMessage());       
         }
     }
-    */
+    /*
     public String updateManager(){
         try {
             managerBean.updateManager(manId, manName, manEmail, manUserName, manPassword);
@@ -599,7 +599,7 @@ public class AttendantManager {
             throw new EJBException(ex.getMessage());       
         }
     }
-    */
+    
     public List<Event> getAllEventsOfCurrentAttendant(Attendant currentAttendant) {
         try {
             this.eventsM = attendantBean.getAllEventsOfAttendant(currentAttendant);
@@ -639,11 +639,12 @@ public class AttendantManager {
     
     public List<Event> getAllEventsOfCurrentManager(){
         try {
-            return managerBean.getAllEventsOfManager(currentManager.getId());
+      //      return managerBean.getAllEventsOfManager(currentManager.getId());
         } catch (Exception ex) {
             throw new EJBException(ex.getMessage());       
         }
+        return null;
     }
     
-    
+    */
 }

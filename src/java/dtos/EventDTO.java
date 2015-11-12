@@ -16,7 +16,6 @@ public class EventDTO {
  
     
     public EventDTO() {
-        
     }
     
     public EventDTO(Long id,String name,String description ,String startDate, String finishDate, Boolean openForenroll) {

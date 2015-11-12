@@ -283,7 +283,7 @@ public class AdministratorManager {
     }
     
     
-   
+   /*
     public String createAdministrator(){
         try {
             if(adminPassword.equals(adminPasswordConfirm)){
@@ -509,3 +509,4 @@ public class AdministratorManager {
     }
 
 }
+*/}

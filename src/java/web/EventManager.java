@@ -66,6 +66,7 @@ public class EventManager {
     private List<Category> categoriesM;
     private Attendant currentAttendantM;
     private Event currentEvent;
+    
 
     private Administrator currentAdministratorM;
     private List<String> attendantsSelected;
@@ -280,7 +281,7 @@ public class EventManager {
     public void setEvDescription(String evDescription) {
         this.evDescription = evDescription;
     }
-
+/*
     public String createEvent() {
         try {
             if (evStartDate.matches("^(?=\\d)(?:(?:31(?!.(?:0?[2469]|11))|(?:30|29)(?!.0?2)|29"
@@ -306,7 +307,7 @@ public class EventManager {
             throw new EJBException(ex.getMessage());
         }
     }
-
+    /*
     public List<Event> getAllEvents() {
         try {
             this.eventsM = eventBean.getAllEvents();
@@ -413,9 +414,8 @@ public class EventManager {
             }
 
         }
-
     }
-
+    
     public String updateEventCategories() {
         for (Category cat : currentEvent.getCategories()) {
             eventBean.unrollEventInCategory(currentEvent.getId(), cat.getId());
@@ -441,3 +441,4 @@ public class EventManager {
         return "administrator_panel?faces-redirect=true";
     }
 }
+*/}

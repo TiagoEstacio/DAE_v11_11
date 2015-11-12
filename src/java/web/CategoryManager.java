@@ -241,7 +241,7 @@ public class CategoryManager {
     
     public List<Administrator> getAllAdministrators(){
         try {
-            this.administratorsM = administratorBean.getAllAdministrators();
+            //this.administratorsM = administratorBean.getAllAdministrators();
             return administratorsM; 
         } catch (Exception ex) {
             throw new EJBException(ex.getMessage());       
@@ -250,7 +250,7 @@ public class CategoryManager {
     
     public String updateAdministrator(){
         try {
-            administratorBean.updateAdministrator(adminId, adminName, adminEmail, adminUserName, adminPassword);
+           // administratorBean.updateAdministrator(adminId, adminName, adminEmail, adminUserName, adminPassword);
             //escolher acção
             //return (String) "index?faces-redirect=true";
             return (String) "Faz update a Administrador";
@@ -263,7 +263,7 @@ public class CategoryManager {
         try {
             UIParameter param = (UIParameter) event.getComponent().findComponent("deleteAdministratorId");
             Long id = (Long) param.getValue();
-            administratorBean.removeAdministrator(id);
+           // administratorBean.removeAdministrator(id);
         } catch (NumberFormatException ex) {
             throw new EJBException(ex.getMessage()); 
         }
@@ -296,7 +296,7 @@ public class CategoryManager {
     
     public List<Category> getAllCategories(){
         try {
-            this.categoriesM = categoryBean.getAllCategories();
+           // this.categoriesM = categoryBean.getAllCategories();
             return categoriesM; 
         } catch (Exception ex) {
             throw new EJBException(ex.getMessage());       
@@ -308,7 +308,7 @@ public class CategoryManager {
     
     public String updateCategory(){
         try {
-            categoryBean.updateCategory(currentCategoryM.getId(),currentCategoryM.getName());
+           // categoryBean.updateCategory(currentCategoryM.getId(),currentCategoryM.getName());
             //escolher acção
             //return (String) "index?faces-redirect=true";
              return "category_lists?faces-redirect=true";
@@ -322,7 +322,7 @@ public class CategoryManager {
         try {
             UIParameter param = (UIParameter) event.getComponent().findComponent("deleteCategoryId");
             Long id = (Long) param.getValue();
-            categoryBean.removeCategory(id);
+            //categoryBean.removeCategory(id);
         } catch (NumberFormatException ex) {
             throw new EJBException(ex.getMessage()); 
         }

@@ -57,7 +57,7 @@ public class ManagerManager {
             throw new EJBException(ex.getMessage());       
         }
     }
-    
+    /*
     public List<Event> getAllEventsOfCurrentManager(){
         try {
             return managerBean.getAllEventsOfManager(currentManager.getId());
@@ -94,7 +94,7 @@ public class ManagerManager {
     
     public String updateManager(){
         try {
-            managerBean.updateManager(manId, manName, manEmail, manUserName, manPassword);
+            //managerBean.updateManager(manId, manName, manEmail, manUserName, manPassword);
             //escolher acção
             //return (String) "index?faces-redirect=true";
             return (String) "Faz update a Manager";
@@ -107,7 +107,7 @@ public class ManagerManager {
         try {
             UIParameter param = (UIParameter) event.getComponent().findComponent("deleteManagerId");
             Long id = (Long) param.getValue();
-            managerBean.removeManager(id);
+            //managerBean.removeManager(id);
         } catch (NumberFormatException ex) {
             throw new EJBException(ex.getMessage()); 
         }
@@ -119,6 +119,8 @@ public class ManagerManager {
         manUserName = null;
         manPassword = null;
     }
+    
+   
     /*
     public List<Event> getAllEventsOfCurrentManager(Manager currentManager){
         try {
