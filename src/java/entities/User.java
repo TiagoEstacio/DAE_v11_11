@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
@@ -26,7 +27,9 @@ exemplo, todos os participantes classificados como inscritos à UC de DAE), para
 possa manter atualizada a lista de participantes de determinado evento;
  */
 @Entity
-@Table(name = "USERS")
+@Table(name = "USERS",
+uniqueConstraints =
+@UniqueConstraint(columnNames = {"USERNAME"}))
 @NamedQueries({
     @NamedQuery(
         name="getAllUsers",
@@ -40,6 +43,12 @@ public abstract class User implements Serializable {
     protected Long id;
     
     @NotNull
+    protected String username;
+    
+    @NotNull
+    protected String password;
+   
+    @NotNull
     protected String name;
     
     @NotNull
@@ -48,22 +57,15 @@ public abstract class User implements Serializable {
             + "(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?",
             message = "{invalid.email}")
     protected String email;
-    
-    @NotNull
-    protected String userName;
-    
-    @NotNull
-    protected String password; 
-    
+        
     public User() {
     }
 
-    public User(String name, String email, String userName, String password) {
-        
+    public User(String username, String password, String name, String email){
+        this.username = username;
+        this.password = password;
         this.name = name;
         this.email = email;
-        this.userName = userName;
-        this.password = password;
     }
 
     public Long getId() {
@@ -91,11 +93,11 @@ public abstract class User implements Serializable {
     }
 
     public String getUserName() {
-        return userName;
+        return username;
     }
 
-    public void setUsername(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {

@@ -42,8 +42,8 @@ public class Manager extends User implements Serializable {
         this.events = new LinkedList<>();
     }
 
-    public Manager(String name, String email, String userName, String password) {
-        super(name, email, userName, password);
+    public Manager(String username, String password, String name, String email) {
+        super(username, password, name, email);
         this.events = new LinkedList<>();
     }
 
@@ -83,4 +83,5 @@ public class Manager extends User implements Serializable {
     public String toString() {
         return "entities.Manager[id=" + id + "]: "+ name;
     }
+    
 }

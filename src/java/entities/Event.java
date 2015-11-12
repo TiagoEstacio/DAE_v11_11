@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package entities;
 
 import java.io.Serializable;
@@ -19,13 +15,16 @@ import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 
 
 @Entity
-@Table(name = "EVENTS")
+@Table(name = "EVENTS",
+uniqueConstraints =
+@UniqueConstraint(columnNames = {"NAME"}))
 @NamedQueries({
     @NamedQuery(
         name="getAllEvents",
@@ -78,14 +77,13 @@ public class Event implements Serializable {
             = @JoinColumn(name = "ATTENDANTS_ID", referencedColumnName = "ID"))
     private List<Attendant> attendants;
     
-    private boolean OpenForEnrollment;
+    private boolean openForEnroll;
       
     public Event() {
         this.categories = new LinkedList<>();
         this.managers = new LinkedList<>();
         this.attendants = new LinkedList<>();
-        
-        OpenForEnrollment = false;
+        this.openForEnroll = false;
     }
 
     public Event(String name,String description ,String startDate, String finishDate) {
@@ -96,16 +94,15 @@ public class Event implements Serializable {
         this.categories = new LinkedList<>();
         this.managers = new LinkedList<>();
         this.attendants = new LinkedList<>();
-        
-        OpenForEnrollment = false;
+        this.openForEnroll = false;
     }
 
-    public boolean isOpenForEnrollment() {
-        return OpenForEnrollment;
+    public boolean isOpenForEnroll() {
+        return openForEnroll;
     }
 
-    public void setOpenForEnrollment(boolean OpenForEnrollment) {
-        this.OpenForEnrollment = OpenForEnrollment;
+    public void setOpenForEnroll(boolean OpenForEnrollment) {
+        this.openForEnroll = OpenForEnrollment;
     }
 
     public Long getId() {
