@@ -143,11 +143,4 @@ public void unrollEventInAttendant(Long idEvent, Long idAttendant) {
             throw new EJBException(ex.getMessage());
         }
     }
-    
-    public String getEnrollState (Event event) {
-    if(event.isOpenForEnrollment()){
-        return "Open";
-    }
-    return "Closed";
-    }
 }
