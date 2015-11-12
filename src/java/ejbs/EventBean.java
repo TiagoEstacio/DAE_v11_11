@@ -185,5 +185,12 @@ public class EventBean {
         }
         return dtos;
     }
+    
+    public String getEnrollState (Event event) {
+        if(event.isOpenForEnroll()){
+            return "Open";
+        }
+        return "Closed";
+    }
 
 }

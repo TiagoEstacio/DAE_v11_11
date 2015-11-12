@@ -70,7 +70,7 @@ public class ConfigBean {
             categoryBean.createCategory("Categoria_6");
             categoryBean.createCategory("Categoria_7");
            
-            /*
+            
             Long managerID = Long.parseLong("5");
             Long eventID = Long.parseLong("18");
             managerBean.enrollManagerInEvent(managerID, eventID);
@@ -78,7 +78,7 @@ public class ConfigBean {
             eventBean.enrollEventtInCategory(Long.parseLong("24"),Long.parseLong("29"));
             eventBean.enrollEventtInCategory(Long.parseLong("25"),Long.parseLong("28"));
             eventBean.enrollEventtInCategory(Long.parseLong("26"),Long.parseLong("28"));
-            */
+            
              
   
         } catch (Exception e) {
