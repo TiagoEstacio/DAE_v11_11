@@ -6,10 +6,10 @@ import java.io.Serializable;
 public class UserDTO implements Serializable{
     
     protected Long id;
-    protected String name;
-    protected String email;
     protected String username;
     protected String password;
+    protected String name;
+    protected String email;
 
     public UserDTO() {
     }    
