@@ -134,11 +134,7 @@ public void unrollEventInAttendant(Long idEvent, Long idAttendant) {
           
        }
    }
-  
-     
-     
-
-
+ 
     public List<Category> getAllCategoriesOfEvent(Event currentEvent) {
         try {
             List<Category> events = currentEvent.getCategories();
@@ -146,5 +142,12 @@ public void unrollEventInAttendant(Long idEvent, Long idAttendant) {
         } catch (Exception ex) {
             throw new EJBException(ex.getMessage());
         }
+    }
+    
+    public String getEnrollState (Event event) {
+    if(event.isOpenForEnrollment()){
+        return "Open";
+    }
+    return "Closed";
     }
 }

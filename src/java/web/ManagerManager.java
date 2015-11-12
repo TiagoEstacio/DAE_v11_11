@@ -119,6 +119,8 @@ public class ManagerManager {
         manUserName = null;
         manPassword = null;
     }
+    
+   
     /*
     public List<Event> getAllEventsOfCurrentManager(Manager currentManager){
         try {

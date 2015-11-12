@@ -417,7 +417,10 @@ public class EventManager {
             }
 
         }
-
+    }
+    
+     public String getEnrollState(Event event) {
+        return eventBean.getEnrollState(event);
     }
 
     public String updateEventCategories() {
