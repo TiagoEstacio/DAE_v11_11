@@ -6,9 +6,9 @@
 package web;
 
 import dtos.ManagerDTO;
-import ejbs.ManagerBean;
-import entities.Event;
-import entities.Manager;
+import ejbs_rev1.ManagerBean;
+import entities_rev1.Event;
+import entities_rev1.Manager;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.EJBException;

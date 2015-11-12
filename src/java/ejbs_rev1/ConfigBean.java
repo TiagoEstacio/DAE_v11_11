@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ejbs;
+package ejbs_rev1;
 
-import entities.Event;
-import entities.Manager;
+import entities_rev1.Event;
+import entities_rev1.Manager;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.Singleton;

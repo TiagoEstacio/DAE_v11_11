@@ -5,12 +5,12 @@
  */
 package web;
 
-import ejbs.AdministratorBean;
-import ejbs.CategoryBean;
-import entities.Administrator;
-import entities.Attendant;
-import entities.Category;
-import entities.Event;
+import ejbs_rev1.AdministratorBean;
+import ejbs_rev1.CategoryBean;
+import entities_rev1.Administrator;
+import entities_rev1.Attendant;
+import entities_rev1.Category;
+import entities_rev1.Event;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.EJBException;

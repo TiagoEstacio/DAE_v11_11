@@ -5,13 +5,13 @@
  */
 package web;
 
-import ejbs.AttendantBean;
-import ejbs.CategoryBean;
-import ejbs.EventBean;
-import entities.Administrator;
-import entities.Attendant;
-import entities.Category;
-import entities.Event;
+import ejbs_rev1.AttendantBean;
+import ejbs_rev1.CategoryBean;
+import ejbs_rev1.EventBean;
+import entities_rev1.Administrator;
+import entities_rev1.Attendant;
+import entities_rev1.Category;
+import entities_rev1.Event;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
@@ -73,9 +73,6 @@ public class EventManager {
 
     private List<Attendant> attendantsDisponiveisSelected = new ArrayList<>();
  
-
-    ;
-
     public EventManager() {
       
     }

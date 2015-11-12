@@ -1,7 +1,7 @@
 
 package dtos;
 
-import entities.Event;
+import entities_rev1.Event;
 import java.io.Serializable;
 import java.util.List;
 

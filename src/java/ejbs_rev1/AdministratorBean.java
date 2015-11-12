@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ejbs;
+package ejbs_rev1;
 
-import entities.Administrator;
+import entities_rev1.Administrator;
 import java.util.List;
 import javax.ejb.EJBException;
 import javax.ejb.Stateless;

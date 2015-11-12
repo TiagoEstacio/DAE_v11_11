@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ejbs;
+package ejbs_rev1;
 
-import entities.Category;
-import entities.Event;
-import entities.Attendant;
+import entities_rev1.Category;
+import entities_rev1.Event;
+import entities_rev1.Attendant;
 import java.util.List;
 import javax.ejb.EJBException;
 import javax.ejb.Stateless;
